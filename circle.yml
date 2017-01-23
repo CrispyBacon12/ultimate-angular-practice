@@ -4,18 +4,18 @@ machine:
 
 test:
   post:
-    - docker build -t chris/ultimate-angular .
+    - docker build -t ultimate-angular .
 
 deployment:
   release:
     branch: master
     commands:
-      - docker tag chris/ultimate-angular $DOCKER_RELEASE/chris/ultimate-angular
+      - docker tag ultimate-angular $DOCKER_RELEASE/ultimate-angular
       - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_RELEASE
-      - docker push $DOCKER_RELEASE/chris/ultimate-angular
+      - docker push $DOCKER_RELEASE/ultimate-angular
   snapshot:
     branch: /.*/
     commands:
-      - docker tag chris/ultimate-angular $DOCKER_SNAPSHOT/chris/ultimate-angular
+      - docker tag ultimate-angular $DOCKER_SNAPSHOT/ultimate-angular
       - docker login -u $DOCKER_USER -p $DOCKER_PASS -e $DOCKER_EMAIL $DOCKER_SNAPSHOT
-      - docker push $DOCKER_SNAPSHOT/chris/ultimate-angular
+      - docker push $DOCKER_SNAPSHOT/ultimate-angular
